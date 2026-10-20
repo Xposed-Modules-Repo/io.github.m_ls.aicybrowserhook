@@ -12,13 +12,13 @@
 
 ## 兼容范围
 
-最低 Android 11（API 30）。已验证环境：魅族 21 Pro、Android 16、Flyme 12.6.0.0A、LSPosed IT 2.1；Aicy 识屏 `com.meizu.picker` 12.2.34、Aicy 助手 `com.meizu.voiceassistant` 12.1.46。
+最低 Android 11（API 30），需要 Xposed / LSPosed 环境。适配入口包括独立 Aicy 识屏 `com.meizu.picker` 12.2.34，以及 Aicy 助手 `com.meizu.voiceassistant` 内嵌识屏的 12.1.46、13.0.51。
 
-Hook 使用上述版本的类名和方法名，其他 Aicy / Flyme 版本需检查状态，不能保证兼容。模块针对 Aicy，不为其他品牌手机提供通用识屏功能。旧搜图入口在所测 Aicy 版本中不可用，本模块不启用它。
+旧版沿用已有入口映射，新版结合方法签名和字节码特征识别；其他 Aicy / Flyme 版本请查看模块状态，不能保证兼容。模块针对 Aicy，不为其他品牌手机提供通用识屏功能，也不启用旧搜图入口。
 
 ## 安装
 
-1. 从 [Releases](https://github.com/Xposed-Modules-Repo/io.github.m_ls.aicybrowserhook/releases) 下载并安装已签名的 `AicyBrowserHook-16-1.1.4.apk`，或通过 LSPosed 模块仓库安装。
+1. 从 [Releases](https://github.com/Xposed-Modules-Repo/io.github.m_ls.aicybrowserhook/releases) 下载并安装最新版本的 APK，或通过 LSPosed 模块仓库安装。
 2. 在 LSPosed 启用模块，作用域同时勾选 **Aicy 识屏**（`com.meizu.picker`）和 **Aicy 助手**（`com.meizu.voiceassistant`）。
 3. 重启这两个应用的进程，或重启手机。
 4. 从桌面或 LSPosed 打开模块设置，选择浏览器和搜索引擎。默认选择 Chrome、跟随 Aicy，默认开启重定向与网页搜索入口。同包名、同签名覆盖升级保留原浏览器选择与其他开关。
@@ -69,10 +69,10 @@ https://example.com/find/{query}?source=aicy
 
 ## 状态与问题定位
 
-状态页通常显示启动方法 **2/2**、网页路径 **4/4**、分词面板 **3/3**。挂接数只说明方法存在，累计改写也不等于网页已经加载成功。
+状态页显示当前版本的适配方式，以及已挂接入口、网页路径和分词面板的实际数量与预期数量。不同版本的入口数量不同，分母会随适配方案变化。挂接数只说明方法存在，累计改写也不等于网页已经加载成功。
 
 - 完全无效：检查模块启用、两个作用域及进程是否重启。
-- Aicy 更新后数量不足：提供两个 Aicy 应用的版本和缺失入口日志，需重新适配方法名。
+- Aicy 更新后数量不足：提供已安装的 Aicy 应用版本和缺失入口日志，便于判断入口是否发生变化。
 - 网页打不开：先确认对应浏览器已安装；尝试“跟随系统默认”。
 - 自定义搜索提示网址错误：检查 `{query}`、HTTP/HTTPS 网址与固定参数编码，并点“保存模板”。
 - 自定义浏览器无法保存：核对包名、启用状态和错误提示；只有注册通用网址入口的应用仍可能不符合浏览器要求。
