@@ -8,7 +8,7 @@
 - MD2 风格设置页，底部“设置 / 状态”导航，支持隐藏桌面入口。
 - 预置浏览器和搜索引擎选择立即保存，无需重新加载 Aicy 进程；自定义包名经检查和确认后保存，自定义网址点“保存模板”后生效。
 
-当前版本：**1.1.4**（versionCode 16），包名 `io.github.m_ls.aicybrowserhook`。本仓库发布 LSPosed 收录版；[源码与完整发布说明](https://github.com/M-ls/aicy-browser-hook/releases/tag/16-1.1.4) 位于个人开发仓库。
+模块包名：`io.github.m_ls.aicybrowserhook`。
 
 ## 兼容范围
 
@@ -22,8 +22,6 @@ Hook 使用上述版本的类名和方法名，其他 Aicy / Flyme 版本需检�
 2. 在 LSPosed 启用模块，作用域同时勾选 **Aicy 识屏**（`com.meizu.picker`）和 **Aicy 助手**（`com.meizu.voiceassistant`）。
 3. 重启这两个应用的进程，或重启手机。
 4. 从桌面或 LSPosed 打开模块设置，选择浏览器和搜索引擎。默认选择 Chrome、跟随 Aicy，默认开启重定向与网页搜索入口。同包名、同签名覆盖升级保留原浏览器选择与其他开关。
-
-旧用户如需保留原包名覆盖升级，可到[个人 Releases](https://github.com/M-ls/aicy-browser-hook/releases/tag/16-1.1.4) 下载带 `legacy` 的 APK。本仓库只发布 `io.github.m_ls.aicybrowserhook`。两个包名属于独立应用，配置不会自动互通。旧用户切换到收录版时，先记下设置，在 LSPosed 停用旧模块，安装新包后重新选择设置及两个作用域，再重启 Aicy 进程。确认正常后可卸载旧包；请勿同时启用两个模块。
 
 隐藏桌面入口后，仍可从 LSPosed 的模块页面打开设置并恢复图标。
 
@@ -78,15 +76,13 @@ https://example.com/find/{query}?source=aicy
 - 网页打不开：先确认对应浏览器已安装；尝试“跟随系统默认”。
 - 自定义搜索提示网址错误：检查 `{query}`、HTTP/HTTPS 网址与固定参数编码，并点“保存模板”。
 - 自定义浏览器无法保存：核对包名、启用状态和错误提示；只有注册通用网址入口的应用仍可能不符合浏览器要求。
-- 覆盖安装失败：新旧 APK 必须使用相同包名与签名证书；旧包升级请选择 `legacy` 附件。
+- 覆盖安装失败：确认安装包与已安装模块的签名证书一致。
 
 提交问题时可附状态页与应用版本；请省略搜索内容、完整网址和个人信息。
 
 ## 支持与源码
 
-[报告问题](https://github.com/M-ls/aicy-browser-hook/issues) · [源码及构建说明](https://github.com/M-ls/aicy-browser-hook) · [1.1.4 发布说明](https://github.com/M-ls/aicy-browser-hook/releases/tag/16-1.1.4)
-
-1.1.4 双包名构建、对齐与签名验证由 GitHub Actions 执行；新包名版本未重新执行实机验证。切换包名后请核对 LSPosed 加载、配置读取和桌面入口行为。
+[报告问题](https://github.com/M-ls/aicy-browser-hook/issues) · [源码及构建说明](https://github.com/M-ls/aicy-browser-hook) · [发布记录](https://github.com/Xposed-Modules-Repo/io.github.m_ls.aicybrowserhook/releases)
 
 ## 数据与许可
 
